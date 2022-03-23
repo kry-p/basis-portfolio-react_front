@@ -1,30 +1,30 @@
-import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-
-import { Typography as MuiTypography, Button } from '@mui/material';
+import styled from 'styled-components';
 import dynamic from 'next/dynamic';
-
-import { styled as muiStyled } from '@mui/material/styles';
+import { useRouter } from 'next/router';
 
 import useWindowSize from '../modules/hooks/useWindowSize';
-
 import { NotFoundMenuStyle } from '../components/Styles';
+import { BorderedButton, BorderlessButton } from '../components/common/Button';
 
 const AppbarWithoutSSR = dynamic(() => import('../components/appbar/Appbar'), {
   ssr: false,
 });
 
-const Typo404 = muiStyled(
-  MuiTypography,
-  {},
-)(() => ({
-  fontFamily: 'MinSans-Thin',
-  fontSize: '4rem',
-  '@media (min-width:512px)': {
-    // eslint-disable-line no-useless-computed-key
-    fontSize: '6rem',
-  },
-}));
+const PageTypo404 = styled.span`
+  font-family: 'MinSans-Thin';
+  font-size: 4rem;
+  user-select: none;
+
+  @media (min-width: 512px) {
+    font-size: 6rem;
+  }
+`;
+
+const PageDescription404 = styled.span`
+  user-select: none;
+`;
+
 const NotFound = () => {
   const router = useRouter();
   const [height, setHeight] = useState(undefined);
@@ -58,25 +58,25 @@ const NotFound = () => {
             height: '100%',
           }}
         >
-          <Typo404>몰?루</Typo404>
-          <MuiTypography>요청하신 페이지를 찾을 수 없습니다.</MuiTypography>
+          <PageTypo404>몰?루</PageTypo404>
+          <PageDescription404>
+            요청하신 페이지를 찾을 수 없습니다.
+          </PageDescription404>
           <NotFoundMenuStyle>
-            <Button
-              variant="contained"
+            <BorderlessButton
               onClick={() => {
                 router.back();
               }}
             >
               이전 페이지로 돌아가기
-            </Button>
-            <Button
-              variant="outlined"
+            </BorderlessButton>
+            <BorderedButton
               onClick={() => {
                 router.push('/');
               }}
             >
               홈으로
-            </Button>
+            </BorderedButton>
           </NotFoundMenuStyle>
         </div>
       </div>

@@ -6,44 +6,29 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 // Material UI components
-import DragHandle from '@mui/icons-material/DragHandle';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import { makeStyles } from '@mui/styles';
+import { MdDragHandle as DragHandle, MdClose } from 'react-icons/md';
 
-import { LogoButton } from '../common/Button';
-import { PortraitMainMenu } from '../Menu';
-import useWindowSize from '../../modules/hooks/useWindowSize';
+import { IconButton, LogoButton } from '../common/Button';
 
-const DRAWER_WIDTH = 224;
+const DRAWER_WIDTH = 270;
+const HeaderBlock = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+`;
 
-const useStyles = makeStyles(() => ({
-  title: {
-    flexGrow: 1,
-    textAlign: 'center',
-  },
-}));
+const AppBar = styled.div`
+  width: 100%;
+  height: 3.5rem;
+  position: absolute;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  z-index: 1;
 
-// Elevation for appbar
-const ElevationScroll = (props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 6 : 0,
-  });
-};
-
-const AppbarContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   .left {
     padding-left: 1.5rem;
@@ -78,87 +63,68 @@ const AppbarContainer = styled.div`
   }
 `;
 
+const Drawer = styled.div`
+  position: fixed;
+  overflow: hidden;
+  top: 0rem;
+  right: -270px;
+
+  width: 270px;
+  height: 100vh;
+
+  transition: 0.3s ease-in-out;
+
+  background-color: black;
+  z-index: 1;
+`;
+
 const AppbarMain = (props) => {
-  const windowSize = useWindowSize();
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const toggleDrawerOpen = (value) => {
-    setOpen(value);
+  const [xPosition, setXPosition] = useState();
+  const toggleMenuOpen = () => {
+    if (xPosition != 0) setXPosition(0);
+    else setXPosition(-DRAWER_WIDTH);
   };
 
-  // Changing layout (Mobile > Tablet)
-  useEffect(() => {
-    if (windowSize.width >= 768) setOpen(false);
-  }, [windowSize]);
-
   return (
-    <>
-      <CssBaseline />
-      <ElevationScroll {...props}>
-        <div>
-          <AppBar
-            color="transparent"
-            elevation={0}
-            sx={{
-              backdropFilter: 'blur(5px)',
-            }}
-          >
-            <AppbarContainer className={classes.title}>
-              <div className="left">
-                <LogoButton />
-              </div>
-              <div className="right">
-                <div className="portrait">
-                  <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{
-                      border: '1px solid',
-                      borderRadius: 1,
-                      margin: '0.6rem',
-                      padding: '0.2rem',
-                      ml: '0rem',
-                      mr: '0.5rem',
-                    }}
-                    onClick={() => {
-                      setOpen(true);
-                    }}
-                  >
-                    <DragHandle />
-                  </IconButton>
-                  <Drawer
-                    anchor="right"
-                    open={open}
-                    onClose={() => {
-                      toggleDrawerOpen(false);
-                    }}
-                    sx={{
-                      width: DRAWER_WIDTH,
-                      flexShrink: 0,
-                      '& .MuiDrawer-paper': {
-                        width: DRAWER_WIDTH,
-                        boxSizing: 'border-box',
-                      },
-                    }}
-                    PaperProps={{
-                      sx: {
-                        background: 'black',
-                        color: 'white',
-                      },
-                    }}
-                    BackdropProps={{ invisible: true }}
-                    elevation={0}
-                  >
-                    <PortraitMainMenu />
-                  </Drawer>
-                </div>
-              </div>
-            </AppbarContainer>
-          </AppBar>
+    <HeaderBlock>
+      <AppBar>
+        <div className="left">
+          <LogoButton />
         </div>
-      </ElevationScroll>
-    </>
+        <div className="right">
+          <div className="portrait">
+            <IconButton
+              onClick={() => {
+                toggleMenuOpen();
+              }}
+            >
+              <DragHandle size="32" />
+            </IconButton>
+            <Drawer
+              style={{
+                transform: `translatex(${xPosition}px)`,
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <IconButton
+                  onClick={() => {
+                    toggleMenuOpen();
+                  }}
+                >
+                  <MdClose size="32" color="white" />
+                </IconButton>
+              </div>
+            </Drawer>
+          </div>
+        </div>
+      </AppBar>
+    </HeaderBlock>
   );
 };
 
