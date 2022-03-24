@@ -14,8 +14,14 @@ export const MainStyle = styled.div`
   overflow: hidden;
   position: relative;
 
+  background-image: url(//source.unsplash.com/1920x1080);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(0.7);
+
   width: 100%;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const NotFoundMenuStyle = styled.div`

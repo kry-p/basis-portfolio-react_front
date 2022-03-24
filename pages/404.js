@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import useWindowSize from '../modules/hooks/useWindowSize';
 import { NotFoundMenuStyle } from '../components/Styles';
 import { BorderedButton, BorderlessButton } from '../components/common/Button';
+import palette from '../modules/palette';
 
 const AppbarWithoutSSR = dynamic(() => import('../components/appbar/Appbar'), {
   ssr: false,
@@ -15,6 +16,7 @@ const PageTypo404 = styled.span`
   font-family: 'MinSans-Thin';
   font-size: 4rem;
   user-select: none;
+  color: ${palette.gray[3]};
 
   @media (min-width: 512px) {
     font-size: 6rem;
@@ -23,6 +25,7 @@ const PageTypo404 = styled.span`
 
 const PageDescription404 = styled.span`
   user-select: none;
+  color: ${palette.gray[3]};
 `;
 
 const NotFound = () => {
@@ -44,7 +47,7 @@ const NotFound = () => {
           justifyContent: 'center',
           overflow: 'hidden',
           position: 'relative',
-
+          background: 'black',
           width: '100%',
           height: `${height}px`,
         }}

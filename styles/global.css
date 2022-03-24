@@ -17,6 +17,22 @@
 }
 
 @font-face {
+  font-family: 'OoohBaby-Regular';
+  src: url('/resources/OoohBaby-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'XTypewriter-Regular';
+  src: url('/resources/XTypewriter-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 600;
@@ -31,7 +47,7 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: MinSans-Thin, -apple-system, sans-serif;
+  font-family: MinSans-Medium, -apple-system, sans-serif;
 }
 
 #__next {
