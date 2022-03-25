@@ -8,6 +8,7 @@ const Logo = styled.button`
   padding: 0.5rem 0.5rem;
 
   font-family: 'OoohBaby-Regular';
+  font-weight: 700;
   font-size: 1.75rem;
   color: ${palette.gray[1]};
 `;
@@ -53,7 +54,7 @@ export const BorderlessButton = styled.button`
 
 const StyledBurger = styled.button`
   position: fixed;
-  top: 1.125rem;
+  top: 2.125rem;
   right: 2.125rem;
   display: flex;
   flex-direction: column;

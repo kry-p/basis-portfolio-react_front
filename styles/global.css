@@ -48,6 +48,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: MinSans-Medium, -apple-system, sans-serif;
+  background: black;
 }
 
 #__next {

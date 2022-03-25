@@ -2,7 +2,8 @@
  * Appbar
  * note: menu button does not implemented
  */
-import React, { useEffect, useState } from 'react';
+import router from 'next/router';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { LogoButton, Burger } from '../common/Button';
@@ -17,10 +18,10 @@ const HeaderBlock = styled.div`
 
 const AppBar = styled.div`
   width: 100%;
-  height: 4rem;
+  height: 6rem;
   position: absolute;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+
+  background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(0, 0, 0, 0));
   z-index: 1;
 
   display: flex;
@@ -70,10 +71,12 @@ const Drawer = styled.div`
   width: 270px;
   height: 100vh;
 
-  transition: 0.3s ease-in-out;
+  transition: 0.5s cubic-bezier(0.8, 0, 0.2, 1);
 
-  background-color: black;
-  z-index: 1;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 4;
 `;
 
 const MainMenu = styled.div`
@@ -81,25 +84,25 @@ const MainMenu = styled.div`
   flex-direction: column;
 
   justify-content: center;
-  padding-top: 4rem;
-
-  .item {
-    padding: 1rem;
-  }
+  padding-top: 6rem;
 `;
 
 const MenuItem = styled.button`
   border: 0px solid black;
   font-family: 'XTypewriter-Regular';
-  color: white;
-  letter-spacing: 0.2rem;
-  background: rgba(0, 0, 0, 1);
+  color: ${palette.gray[5]};
+  letter-spacing: 0.1rem;
+  background: rgba(0, 0, 0, 0);
+
+  font-size: medium;
 
   transition: color 0.25s;
   user-select: none;
 
+  padding-bottom: 1rem;
+
   &:hover {
-    color: ${palette.gray[4]};
+    color: white;
   }
 `;
 
@@ -130,8 +133,17 @@ const AppbarMain = () => {
             }}
           >
             <MainMenu>
-              <MenuItem>
-                <h3>Home</h3>
+              <MenuItem item onClick={() => router.push('/')}>
+                Home
+              </MenuItem>
+              <MenuItem item onClick={() => router.push('#')}>
+                About me
+              </MenuItem>
+              <MenuItem item onClick={() => router.push('#')}>
+                Gallery
+              </MenuItem>
+              <MenuItem item onClick={() => router.push('#')}>
+                Contact
               </MenuItem>
             </MainMenu>
           </Drawer>

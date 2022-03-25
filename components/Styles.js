@@ -2,26 +2,44 @@
  * Stylesheets with styled-components
  */
 import styled from 'styled-components';
+import palette from '../modules/palette';
 
 export const AppStyle = styled.div`
   width: 100vw;
 `;
 
-export const MainStyle = styled.div`
+export const PageMain = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export const Page404 = styled.div`
   display: flex;
   justify-content: center;
-
   overflow: hidden;
   position: relative;
 
-  background-image: url(//source.unsplash.com/1920x1080);
-  background-position: center;
+  background: url(/resources/404.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
-  filter: brightness(0.7);
+  background-position: center;
 
   width: 100%;
-  height: 100vh;
+`;
+
+export const PageTypo404 = styled.span`
+  font-family: 'XTypewriter-Regular';
+  font-size: 8rem;
+  user-select: none;
+  color: ${palette.gray[3]};
+
+  @media (min-width: 512px) {
+    font-size: 12rem;
+  }
+`;
+
+export const PageDescription404 = styled.span`
+  user-select: none;
+  color: ${palette.gray[3]};
 `;
 
 export const NotFoundMenuStyle = styled.div`
