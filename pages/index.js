@@ -1,12 +1,10 @@
-import { useState } from 'react';
-
-import dynamic from 'next/dynamic';
+import { useState, Fragment } from 'react';
 import styled from 'styled-components';
 
 import { PageMain } from '../components/Styles';
-import { IconButton } from '../components/common/Button';
-
+import { IconButton } from '../components/button';
 import palette from '../modules/palette';
+import AppbarWithoutSSR from '../components/appbar/withoutSSR';
 
 const ImageContainer = styled.div`
   position: absolute;
@@ -14,7 +12,7 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  filter: brightness(90%);
+  filter: brightness(80%);
   background-size: cover;
   background-position: center;
 
@@ -41,10 +39,6 @@ const Image = (url, currentUrl) => {
     />
   );
 };
-
-const AppbarWithoutSSR = dynamic(() => import('../components/appbar/Appbar'), {
-  ssr: false,
-});
 
 const featuredImageUrl = [
   '/resources/test1.jpg',
@@ -77,12 +71,34 @@ const Arrow = styled.div`
   }
 
   div:first-child {
-    height: 1.85rem;
+    height: 1.35rem;
     width: 0.15rem;
   }
   div:nth-child(2) {
     height: 0.15rem;
-    width: 2rem;
+    width: 1.5rem;
+  }
+
+  @media (min-width: 512px) {
+    div:first-child {
+      height: 1.85rem;
+      width: 0.15rem;
+    }
+    div:nth-child(2) {
+      height: 0.15rem;
+      width: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    div:first-child {
+      height: 2.35rem;
+      width: 0.15rem;
+    }
+    div:nth-child(2) {
+      height: 0.15rem;
+      width: 2.5rem;
+    }
   }
 `;
 
@@ -98,9 +114,11 @@ const Index = () => {
 
   return (
     <>
-      <AppbarWithoutSSR />
+      <AppbarWithoutSSR title="BASIS" />
       <PageMain />
-      {featuredImageUrl.map((url) => Image(url, featuredImageUrl[index]))}
+      {featuredImageUrl.map((url) => (
+        <Fragment key={url}>{Image(url, featuredImageUrl[index])}</Fragment>
+      ))}
       <IconButtonLeftContainer>
         <IconButton>
           <Arrow

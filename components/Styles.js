@@ -37,12 +37,25 @@ export const PageTypo404 = styled.span`
   }
 `;
 
+export const PageStyle404 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: brightness(50%);
+  -webkit-backdrop-filter: brightness(50%);
+
+  width: 100%;
+  height: 100%;
+`;
+
 export const PageDescription404 = styled.span`
   user-select: none;
   color: ${palette.gray[3]};
 `;
 
-export const NotFoundMenuStyle = styled.div`
+export const NotFoundMenu = styled.div`
   display: grid;
   padding-top: 1rem;
   grid-gap: 0.5rem;

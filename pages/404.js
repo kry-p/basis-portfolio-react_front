@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
 import useWindowSize from '../modules/hooks/useWindowSize';
-import { NotFoundMenuStyle } from '../components/Styles';
-import { BorderedButton, BorderlessButton } from '../components/common/Button';
 
-import { Page404, PageTypo404, PageDescription404 } from '../components/Styles';
-
-const AppbarWithoutSSR = dynamic(() => import('../components/appbar/Appbar'), {
-  ssr: false,
-});
+import { BorderedButton, BorderlessButton } from '../components/button';
+import {
+  Page404,
+  PageStyle404,
+  PageTypo404,
+  PageDescription404,
+  NotFoundMenu,
+} from '../components/Styles';
+import AppbarWithoutSSR from '../components/appbar/withoutSSR';
 
 const NotFound = () => {
   const router = useRouter();
@@ -25,29 +25,18 @@ const NotFound = () => {
 
   return (
     <>
-      <AppbarWithoutSSR />
+      <AppbarWithoutSSR title="BASIS" />
       <Page404
         style={{
           height: `${height}px`,
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backdropFilter: 'brightness(50%)',
-            WebkitBackdropFilter: 'brightness(50%)',
-            width: '100%',
-            height: '100%',
-          }}
-        >
+        <PageStyle404>
           <PageTypo404>404</PageTypo404>
           <PageDescription404>
             요청하신 페이지를 찾을 수 없습니다.
           </PageDescription404>
-          <NotFoundMenuStyle>
+          <NotFoundMenu>
             <BorderlessButton
               onClick={() => {
                 router.back();
@@ -62,8 +51,8 @@ const NotFound = () => {
             >
               홈으로
             </BorderedButton>
-          </NotFoundMenuStyle>
-        </div>
+          </NotFoundMenu>
+        </PageStyle404>
       </Page404>
     </>
   );

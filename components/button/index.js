@@ -1,5 +1,5 @@
 import router from 'next/router';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import palette from '../../modules/palette';
 
 const Logo = styled.button`
@@ -7,8 +7,12 @@ const Logo = styled.button`
   border: rgba(0, 0, 0, 0);
   padding: 0.5rem 0.5rem;
 
-  font-family: 'OoohBaby-Regular';
-  font-weight: 700;
+  ${(props) =>
+    props.cali &&
+    css`
+      font-family: 'OoohBaby-Regular';
+      font-weight: 700;
+    `}
   font-size: 1.75rem;
   color: ${palette.gray[1]};
 `;
@@ -74,14 +78,13 @@ const StyledBurger = styled.button`
   }
 
   @media (min-width: 1024px) {
-    right: calc((100vw - 1024px) / 2 + 2rem);
+    right: calc((100vw - 1024px) / 3 + 2rem);
   }
 
   div {
     width: 1.75rem;
     height: 0.075rem;
     background: ${palette.gray[1]};
-    /* background: ${({ open }) => (open ? '#FFFFFF' : '#000000')}; */
     transition: all 0.3s ease-in-out;
     position: relative;
     transform-origin: 1px;
@@ -116,14 +119,17 @@ export const Burger = ({ open, setOpen }) => {
   );
 };
 
-export const LogoButton = () => {
-  return (
+export const LogoButton = ({ title, cali }) => {
+  return cali ? (
     <Logo
       onClick={() => {
         router.push('/');
       }}
+      cali
     >
-      BASIS
+      {title}
     </Logo>
+  ) : (
+    <Logo>{title}</Logo>
   );
 };
