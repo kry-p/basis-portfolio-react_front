@@ -18,7 +18,7 @@ import {
 
 const mainRouteData = [
   ['Home', '/'],
-  ['About me', '#'],
+  ['About me', '/about'],
   ['Gallery', '#'],
   ['Contact', '#'],
 ];
