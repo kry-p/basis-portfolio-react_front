@@ -14,7 +14,7 @@ const Logo = styled.button`
       font-weight: 700;
     `}
   font-size: 1.75rem;
-  color: ${palette.gray[1]};
+  color: ${palette.gray[6]};
 `;
 
 export const BorderedButton = styled.button`
@@ -84,7 +84,7 @@ const StyledBurger = styled.button`
   div {
     width: 1.75rem;
     height: 0.075rem;
-    background: ${palette.gray[1]};
+    background: ${palette.gray[6]};
     transition: all 0.3s ease-in-out;
     position: relative;
     transform-origin: 1px;

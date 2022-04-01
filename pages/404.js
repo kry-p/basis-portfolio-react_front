@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import useWindowSize from '../modules/hooks/useWindowSize';
+import useWindow from '../modules/hooks/useWindow';
 
 import { BorderedButton, BorderlessButton } from '../components/button';
 import {
@@ -16,12 +16,12 @@ import AppbarWithoutSSR from '../components/appbar/withoutSSR';
 const NotFound = () => {
   const router = useRouter();
   const [height, setHeight] = useState(undefined);
-  const windowSize = useWindowSize();
+  const windowInfo = useWindow();
 
   // For Server-side Rendering
   useEffect(() => {
     setHeight(window.innerHeight);
-  }, [windowSize]);
+  }, [windowInfo]);
 
   return (
     <>

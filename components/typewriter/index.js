@@ -10,9 +10,9 @@ const TextWrapper = styled.div`
   top: calc(50vh - 0.875rem);
   z-index: 1;
 
-  font-size: 1.75rem;
+  font-size: 1.625rem;
   letter-spacing: -0.1rem;
-  color: ${palette.gray[5]};
+  color: ${palette.gray[3]};
 
   @media (min-width: 324px) {
     top: calc(50vh - 1rem);
@@ -37,10 +37,6 @@ const onInit = (typewriter) => {
     .deleteAll()
     .pauseFor(2000)
     .typeString('프론트엔드 개발자입니다.')
-    .pauseFor(2000)
-    .deleteAll()
-    .pauseFor(2000)
-    .typeString('사진도 찍고 있습니다.')
     .pauseFor(2000)
     .deleteAll()
     .pauseFor(2000)

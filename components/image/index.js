@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 
-const ImageContainer = styled.div`
+const ImageBlock = styled.div`
   position: absolute;
   top: 0;
 
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
-  filter: brightness(50%);
+  filter: brightness(80%) contrast(80%) grayscale(100%);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 
   transition: 0.5s cubic-bezier(0.8, 0, 0.2, 1);
 `;
 
 const Image = (url, currentUrl) => {
   return url === currentUrl ? (
-    <ImageContainer
+    <ImageBlock
       style={{
         background: `url(${url})`,
         backgroundSize: 'cover',
@@ -24,7 +25,7 @@ const Image = (url, currentUrl) => {
       }}
     />
   ) : (
-    <ImageContainer
+    <ImageBlock
       style={{
         background: `url(${url})`,
         backgroundSize: 'cover',

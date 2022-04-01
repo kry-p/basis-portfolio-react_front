@@ -14,15 +14,12 @@ export const AppBar = styled.div`
   height: 6rem;
   position: absolute;
 
-  // 메뉴 바 밝기 변경?
-  background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(0, 0, 0, 0));
   z-index: 1;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   .left {
     padding-left: 2rem;
   }
@@ -68,8 +65,8 @@ export const Drawer = styled.div`
 
   transition: 0.5s cubic-bezier(0.8, 0, 0.2, 1);
 
-  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 4;
 `;

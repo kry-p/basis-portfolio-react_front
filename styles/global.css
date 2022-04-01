@@ -41,6 +41,15 @@
 }
 
 @font-face {
+  font-family: 'D2Coding';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 600;
@@ -55,8 +64,12 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: MinSans-Medium, -apple-system, sans-serif;
+  font-family: D2Coding, -apple-system, sans-serif;
   background: black;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 #__next {

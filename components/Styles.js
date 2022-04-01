@@ -63,3 +63,7 @@ export const NotFoundMenu = styled.div`
     grid-template-columns: 2fr 1fr;
   }
 `;
+
+export const MainBlock = styled.div`
+  height: 100vh;
+`;
