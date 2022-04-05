@@ -21,9 +21,10 @@ export const BorderedButton = styled.button`
   background-color: black;
   color: white;
   border: 2px solid ${palette.gray[1]};
+  border-radius: 24px;
   font-family: 'MinSans-Medium';
   font-size: 0.875rem;
-  padding: 0.7rem;
+  padding: 0.7rem 1.2rem 0.7rem 1.2rem;
 
   transition: background-color 0.25s;
   user-select: none;
@@ -43,10 +44,11 @@ export const BorderlessButton = styled.button`
   background-color: ${palette.gray[9]};
   color: white;
   color: white;
+  border-radius: 24px;
   border: rgba(0, 0, 0, 0);
   font-family: 'MinSans-Medium';
   font-size: 0.875rem;
-  padding: 0.7rem;
+  padding: 0.7rem 1.2rem 0.7rem 1.2rem;
 
   transition: background-color 0.25s;
   user-select: none;

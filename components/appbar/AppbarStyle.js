@@ -81,7 +81,7 @@ export const Menu = styled.div`
 
 export const MenuItem = styled.button`
   border: 0px solid black;
-  font-family: 'XTypewriter-Bold';
+  font-family: D2Coding;
   color: ${palette.gray[5]};
   letter-spacing: 0.1rem;
   background: rgba(0, 0, 0, 0);

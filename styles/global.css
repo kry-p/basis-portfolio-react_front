@@ -17,6 +17,15 @@
 }
 
 @font-face {
+  font-family: 'MinSans-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'OoohBaby-Regular';
   src: url('/resources/OoohBaby-Regular.ttf') format('truetype');
   font-weight: normal;
@@ -66,6 +75,23 @@ body {
   margin: 0;
   font-family: D2Coding, -apple-system, sans-serif;
   background: black;
+}
+
+img {
+  transition: 0.3s;
+}
+
+a:link {
+  color: black;
+}
+a:visited {
+  color: black;
+}
+a:hover {
+  color: blue;
+}
+a:active {
+  color: green;
 }
 
 ::-webkit-scrollbar {
