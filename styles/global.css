@@ -75,6 +75,7 @@ body {
   margin: 0;
   font-family: D2Coding, -apple-system, sans-serif;
   background: black;
+  text-rendering: optimizeLegibility;
 }
 
 img {

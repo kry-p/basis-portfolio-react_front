@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,12 +8,14 @@ import AppbarWithoutSSR from '../components/appbar/withoutSSR';
 import styled, { css } from 'styled-components';
 
 import Fade from 'react-reveal/Fade';
-import Carousel, { consts } from 'react-elastic-carousel';
-import { ArrowButton, Arrow } from '../components/button/Arrow';
+import Carousel from 'react-elastic-carousel';
 import useWindow from '../modules/hooks/useWindow';
 import { BorderedButton } from '../components/button';
 
 import { AiOutlineGithub, AiOutlineLink } from 'react-icons/ai';
+import Guide from '../components/Guide';
+
+import ContactUs from '../containers/ContactUs';
 
 const Page = styled.div`
   font-family: MinSans-Thin;
@@ -156,7 +158,7 @@ const AboutArticleDescription = styled.article`
 const TechStackArticle = styled.div`
   display: grid;
   justify-content: center;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   gap: 20px;
 
@@ -177,9 +179,9 @@ const TechStackArticle = styled.div`
   }
 `;
 
-const TechStackArticleTitle = styled.div`
+export const CommonArticleTitle = styled.div`
   border-bottom: 1px solid black;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
   font-size: 1.2rem;
 
   @media (min-width: 384px) {
@@ -235,7 +237,6 @@ const TechStackArticleDescription = styled.div`
   @media (min-width: 1024px) {
     font-size: 4rem;
   }
-  /* font-size: 3rem; */
 `;
 
 const ProjectCard = styled.div`
@@ -324,7 +325,7 @@ const Card = ({ img, ext, title, description, github, link }) => {
             color: 'black',
           }}
         >
-          <Link href="/asdb">Learn more...</Link>
+          <Link href="/asdb">더 알아보기...</Link>
         </div>
         <div
           style={{
@@ -376,28 +377,65 @@ const ProjectCarousel = () => {
     <Carousel
       itemsToScroll={1}
       itemsToShow={width >= 768 ? (width >= 1024 ? 3 : 2) : 1}
-      // enableAutoPlay
-      // autoPlaySpeed={12000}
+      enableAutoPlay
+      autoPlaySpeed={12000}
       renderArrow={() => <div />}
-      renderPagination={() => <div />}
+      renderPagination={({ pages, activePage, onClick }) => {
+        return (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              paddingTop: '1rem',
+              alignItems: 'center',
+            }}
+          >
+            {pages.map((page) => {
+              const isActivePage = activePage === page;
+              return (
+                <div
+                  key={page}
+                  onClick={() => onClick(page)}
+                  style={{
+                    width: `${isActivePage ? '0.75rem' : '0.5rem'}`,
+                    height: `${isActivePage ? '0.75rem' : '0.5rem'}`,
+                    borderRadius: '1rem',
+                    margin: '0rem 0.5rem 0rem 0.5rem',
+                    backgroundColor: `${
+                      isActivePage ? 'rgb(80, 80, 80)' : 'rgb(200, 200, 200)'
+                    }`,
+                    transition: '0.25s ease-out',
+                  }}
+                />
+              );
+            })}
+          </div>
+        );
+      }}
     >
       <Card
         img="/resources/test1"
         ext="jpg"
-        title="Lorem ipsum"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec vulputate nisl. Fusce ultricies hendrerit dignissim. Duis ut nisl tempor, maximus turpis nec, efficitur ipsum. Aenean auctor tempus urna, non laoreet augue feugiat ut. Donec at orci et lorem vulpu"
+        title="프로젝트 1"
+        description="못하다 사는가 미묘한 영원히 때에, 피다. 이상의 눈에 예가 끓는 가장 어디 주며, 이상은 돋고, 것이다. 지혜는 소담스러운 가는 트고, 주는 살았으며, 쓸쓸하랴? 황금시대를 이상의 찬미를 약동하다. 천고에 뛰노는 청춘을 인생에 보는 크고 피부가 남는 방황하여도, 사막이다. 듣기만 대고, 이상은 보이는 청춘의 그들을 싶이 구하지 것이다. 사람은 풍부하게 트고, 끓는 그들을 피어나기 피고 것이다."
+        github="#"
+        link="#"
       />
       <Card
         img="/resources/test2"
         ext="jpg"
-        title="Lorem ipsum"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec vulputate nisl. Fusce ultricies hendrerit dignissim. Duis ut nisl tempor, maximus turpis nec, efficitur ipsum. Aenean auctor tempus urna, non laoreet augue feugiat ut. Donec at orci et lorem vulpu"
+        title="프로젝트 2"
+        description="못하다 사는가 미묘한 영원히 때에, 피다. 이상의 눈에 예가 끓는 가장 어디 주며, 이상은 돋고, 것이다. 지혜는 소담스러운 가는 트고, 주는 살았으며, 쓸쓸하랴? 황금시대를 이상의 찬미를 약동하다. 천고에 뛰노는 청춘을 인생에 보는 크고 피부가 남는 방황하여도, 사막이다. 듣기만 대고, 이상은 보이는 청춘의 그들을 싶이 구하지 것이다. 사람은 풍부하게 트고, 끓는 그들을 피어나기 피고 것이다."
+        github="#"
+        link="#"
       />
       <Card
         img="/resources/test3"
         ext="jpg"
-        title="Lorem ipsum"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec vulputate nisl. Fusce ultricies hendrerit dignissim. Duis ut nisl tempor, maximus turpis nec, efficitur ipsum. Aenean auctor tempus urna, non laoreet augue feugiat ut. Donec at orci et lorem vulpu"
+        title="프로젝트 3"
+        description="못하다 사는가 미묘한 영원히 때에, 피다. 이상의 눈에 예가 끓는 가장 어디 주며, 이상은 돋고, 것이다. 지혜는 소담스러운 가는 트고, 주는 살았으며, 쓸쓸하랴? 황금시대를 이상의 찬미를 약동하다. 천고에 뛰노는 청춘을 인생에 보는 크고 피부가 남는 방황하여도, 사막이다. 듣기만 대고, 이상은 보이는 청춘의 그들을 싶이 구하지 것이다. 사람은 풍부하게 트고, 끓는 그들을 피어나기 피고 것이다."
+        github="#"
+        link="#"
       />
     </Carousel>
   );
@@ -405,6 +443,7 @@ const ProjectCarousel = () => {
 
 const Content = () => (
   <>
+    <Guide />
     <Page oddPage>
       <Grid double style={{ fontFamily: 'D2Coding' }}>
         <Left>
@@ -510,9 +549,7 @@ const Content = () => (
         <TechStackArticle>
           <Fade bottom>
             <article>
-              <TechStackArticleTitle small>
-                My tech stacks.
-              </TechStackArticleTitle>
+              <CommonArticleTitle small>My tech stacks.</CommonArticleTitle>
               <TechStackArticleDescription>
                 NodeJs
                 <br />
@@ -526,7 +563,7 @@ const Content = () => (
           </Fade>
           <Fade bottom>
             <article>
-              <TechStackArticleTitle big>My interests.</TechStackArticleTitle>
+              <CommonArticleTitle big>My interests.</CommonArticleTitle>
               <TechStackArticleDescription>
                 Lorem
                 <br />
@@ -551,13 +588,28 @@ const Content = () => (
           }}
         >
           <Fade right>
-            <TechStackArticleTitle big>
-              My front-end projects.
-            </TechStackArticleTitle>
+            <CommonArticleTitle big>My front-end projects.</CommonArticleTitle>
           </Fade>
           <ProjectCarousel />
         </div>
       </Grid>
+    </Page>
+    <Page>
+      <div
+        style={{
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <ContactUs />
+        <div
+          style={{ width: '100vw', height: '30vh', background: 'black' }}
+        ></div>
+      </div>
     </Page>
   </>
 );

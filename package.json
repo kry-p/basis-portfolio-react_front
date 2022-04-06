@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@emailjs/browser": "^3.5.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@svgr/webpack": "^6.2.1",

@@ -3,4 +3,7 @@ module.exports = {
     loader: 'akamai',
     path: '',
   },
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
 };
