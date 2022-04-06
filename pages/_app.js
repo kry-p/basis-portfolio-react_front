@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppStyle } from '../components/Styles';
+import { AppStyle } from '../components/styles';
 
 import '../styles/global.css';
 

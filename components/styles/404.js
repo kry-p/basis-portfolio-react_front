@@ -1,16 +1,5 @@
-/*
- * Stylesheets with styled-components
- */
 import styled from 'styled-components';
-import palette from '../modules/palette';
-
-export const AppStyle = styled.div`
-  width: 100vw;
-`;
-
-export const PageMain = styled.div`
-  width: 100%;
-`;
+import palette from '../../modules/palette';
 
 export const Page404 = styled.div`
   display: flex;
@@ -36,6 +25,16 @@ export const PageTypo404 = styled.span`
   }
 `;
 
+export const NotFoundMenu = styled.div`
+  display: grid;
+  padding-top: 1rem;
+  grid-gap: 0.5rem;
+  grid-template-rows: 1fr;
+  @media (min-width: 512px) {
+    grid-template-columns: 2fr 1fr;
+  }
+`;
+
 export const PageStyle404 = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,18 +51,4 @@ export const PageStyle404 = styled.div`
 export const PageDescription404 = styled.span`
   user-select: none;
   color: ${palette.gray[3]};
-`;
-
-export const NotFoundMenu = styled.div`
-  display: grid;
-  padding-top: 1rem;
-  grid-gap: 0.5rem;
-  grid-template-rows: 1fr;
-  @media (min-width: 512px) {
-    grid-template-columns: 2fr 1fr;
-  }
-`;
-
-export const MainBlock = styled.div`
-  height: 100vh;
 `;

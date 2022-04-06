@@ -40,6 +40,20 @@ export const IconButton = styled.button`
   padding: 0.5rem 0.5rem;
 `;
 
+export const FooterButton = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid white;
+  background-color: black;
+  border-radius: 1.25rem;
+  padding-top: 0.25rem;
+
+  transition: background-color 0.25s ease-in-out;
+  &:hover {
+    background-color: ${palette.gray[8]};
+  }
+`;
+
 export const BorderlessButton = styled.button`
   background-color: ${palette.gray[9]};
   color: white;

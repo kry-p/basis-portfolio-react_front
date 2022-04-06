@@ -10,7 +10,7 @@ import {
   PageTypo404,
   PageDescription404,
   NotFoundMenu,
-} from '../components/Styles';
+} from '../components/Styles/404';
 import AppbarWithoutSSR from '../components/appbar/withoutSSR';
 
 const NotFound = () => {

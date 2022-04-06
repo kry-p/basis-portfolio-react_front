@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
-
 import styled, { css } from 'styled-components';
+import emailjs from '@emailjs/browser';
+import { AiOutlineSend } from 'react-icons/ai';
 
-import { CommonArticleTitle } from '../pages/about';
+import { CommonArticleTitle } from '../components/styles/About';
 import { BorderedButton } from '../components/button';
 
-import { AiOutlineSend } from 'react-icons/ai';
 const StyledTextarea = styled.textarea`
   border: 1px solid black;
   padding: 0.75rem;
