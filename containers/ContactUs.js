@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import emailjs from '@emailjs/browser';
-import { AiOutlineSend } from 'react-icons/ai';
 
 import { CommonArticleTitle } from '../components/styles/About';
-import { BorderedButton } from '../components/button';
+import { BorderlessInput } from '../components/button';
 
 const StyledTextarea = styled.textarea`
   border: 1px solid black;
@@ -13,10 +12,12 @@ const StyledTextarea = styled.textarea`
   font-size: 1rem;
   border-radius: 24px;
   resize: none;
-  transition: 0.5s ease-in-out;
+  transition: 0.25s ease-in-out;
 
   width: 12rem;
   height: 1.25rem;
+
+  // 브라우저 폭에 따라 폼 너비가 넓어지게 처리
   @media (min-width: 384px) {
     width: 16rem;
   }
@@ -35,21 +36,24 @@ const StyledTextarea = styled.textarea`
       height: 8rem;
     `}
 
+  // 포커스 시
   &:focus {
-    outline: none;
+    border: 1px solid red;
+    outline: none; // 기본 하이라이트 제거
   }
 `;
 
-const Textarea = ({ name, itemName, placeholder, ...rest }) => {
+const Textarea = ({ name, itemName, ...rest }) => {
   return (
     <>
       <div style={{ padding: '0.5rem 0rem 0.5rem 0.75rem' }}>{itemName}</div>
-      <StyledTextarea {...rest} name={name} placeholder={placeholder} />
+      <StyledTextarea {...rest} name={name} />
     </>
   );
 };
 
 const ContactUs = () => {
+  const form = useRef();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
@@ -57,25 +61,21 @@ const ContactUs = () => {
   const handleUpdateEmail = (e) => setEmail(e.target.value);
   const handleUpdateContent = (e) => setContent(e.target.value);
 
+  // 메일 발송
   const sendEmail = (e) => {
     e.preventDefault();
-    const data = {
-      from_name: name,
-      from_email: email,
-      message: content,
-    };
     const regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
-    if (!regex.test(data.from_email)) {
+    if (!regex.test(email)) {
       alert('메일 주소가 올바르지 않습니다.');
       return;
     }
 
     emailjs
-      .send(
+      .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICEID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATEID,
-        data,
+        form.current,
         process.env.NEXT_PUBLIC_EMAILJS_USERID,
       )
       .then(
@@ -100,11 +100,12 @@ const ContactUs = () => {
           marginTop: '1rem',
         }}
       >
-        <form onSubmit={sendEmail}>
+        <form ref={form} onSubmit={sendEmail}>
           <Textarea
             name="from_name"
             itemName="NAME"
             placeholder="이름"
+            required
             value={name}
             onChange={handleUpdateName}
           />
@@ -112,6 +113,8 @@ const ContactUs = () => {
             name="from_email"
             itemName="EMAIL"
             placeholder="메일 주소"
+            type="email"
+            required
             value={email}
             onChange={handleUpdateEmail}
           />
@@ -120,6 +123,7 @@ const ContactUs = () => {
             name="message"
             itemName="CONTENTS"
             placeholder="여기에 내용을 입력하세요"
+            required
             value={content}
             onChange={handleUpdateContent}
           />
@@ -130,18 +134,7 @@ const ContactUs = () => {
               justifyContent: 'flex-end',
             }}
           >
-            <BorderedButton onClick={sendEmail}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-evenly',
-                  alignItems: 'center',
-                }}
-              >
-                <AiOutlineSend style={{ paddingRight: '0.5rem' }} />
-                <span>Send</span>
-              </div>
-            </BorderedButton>
+            <BorderlessInput type="submit" value="Send" />
           </div>
         </form>
       </div>
