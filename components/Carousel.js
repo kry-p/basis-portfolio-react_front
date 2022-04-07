@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import router from 'next/router';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
@@ -7,6 +7,7 @@ import { AiOutlineGithub, AiOutlineLink } from 'react-icons/ai';
 
 import useWindow from '../modules/hooks/useWindow';
 import { BorderedButton } from './button';
+import palette from '../modules/palette';
 
 // Side project cards
 const ProjectCard = styled.div`
@@ -24,6 +25,7 @@ const ProjectCard = styled.div`
 
   // 카드 영역을 벗어나는 이미지를 숨김
   overflow: hidden;
+  transition: 0.5s ease-in-out;
 
   @media (min-width: 320px) {
     width: 17rem;
@@ -47,27 +49,34 @@ const ProjectCardCover = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 
+  padding: 1rem 0rem;
+
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
   @media (min-width: 320px) {
+    height: 17rem;
     width: 17rem;
   }
 
   @media (min-width: 512px) {
+    height: 16rem;
     width: 20rem;
   }
 `;
 
 // 이미지 파일 경로, 확장자, 프로젝트 이름, 상세정보, 깃허브 링크, 데모 / 실제 웹 서비스 링크, 상세정보 링크
-const Card = ({ img, ext, title, description, github, link, descLink }) => {
+const Card = ({ img, ext, title, description, github, link, stacks }) => {
   return (
     <ProjectCard>
       <Image
         src={`${img}.${ext}`}
         blurDataURL={`${img}_small.${ext}`}
         alt={`Image of project: ${title}`}
-        width={320}
+        width={400}
         height={250}
         objectFit="cover"
         placeholder="blur"
@@ -93,18 +102,41 @@ const Card = ({ img, ext, title, description, github, link, descLink }) => {
         </div>
         <div
           style={{
-            width: '85%',
-            fontFamily: 'MinSans-Thin',
-            fontSize: '1rem',
+            width: '90%',
+            fontFamily: 'MinSans-Medium',
+            fontSize: '0.8rem',
             color: 'black',
           }}
         >
           {/* 상세정보 링크가 없으면 숨김 */}
-          {descLink ? <Link href={descLink}>더 알아보기...</Link> : null}
+          {stacks ? (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+              }}
+            >
+              {stacks.map((item) => (
+                <div
+                  style={{
+                    margin: '0.25rem',
+                    background: `${palette.gray[2]}`,
+                    borderRadius: '1rem',
+                    padding: '0.25rem 0.75rem',
+                    color: `${palette.gray[8]}`,
+                  }}
+                  key={item}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div
           style={{
-            width: '85%',
+            width: '88.75%',
             display: 'grid',
             gap: '0.5rem',
             gridTemplateColumns: '1fr 1fr',
@@ -189,30 +221,55 @@ const ProjectCarousel = () => {
         );
       }}
     >
-      {/* 더미 카드 */}
       <Card
-        img="/resources/test1"
-        ext="jpg"
-        title="프로젝트 1"
-        description="못하다 사는가 미묘한 영원히 때에, 피다. 이상의 눈에 예가 끓는 가장 어디 주며, 이상은 돋고, 것이다. 지혜는 소담스러운 가는 트고, 주는 살았으며, 쓸쓸하랴? 황금시대를 이상의 찬미를 약동하다. 천고에 뛰노는 청춘을 인생에 보는 크고 피부가 남는 방황하여도, 사막이다. 듣기만 대고, 이상은 보이는 청춘의 그들을 싶이 구하지 것이다. 사람은 풍부하게 트고, 끓는 그들을 피어나기 피고 것이다."
-        github="#"
-        link="#"
+        img="/resources/project_gamealive"
+        ext="png"
+        title="게임얼라이브"
+        description={
+          <div>
+            게임물관리위원회의 심의 정보 API를 이용, 심의가 완료된 게임물의
+            정보를 제공하는 웹 서비스입니다.
+            <br />
+            심의 정보 자동 수집과 날짜별 / 이름별 검색을 지원합니다.
+            <br />
+            React를 사용한 첫 프론트엔드 프로젝트입니다.
+          </div>
+        }
+        github="https://github.com/kry-p/gamealive-client"
+        link="https://gamealive.xyz"
+        stacks={['React', 'Redux', 'styled-components']}
       />
       <Card
-        img="/resources/test2"
-        ext="jpg"
-        title="프로젝트 2"
-        description="못하다 사는가 미묘한 영원히 때에, 피다. 이상의 눈에 예가 끓는 가장 어디 주며, 이상은 돋고, 것이다. 지혜는 소담스러운 가는 트고, 주는 살았으며, 쓸쓸하랴? 황금시대를 이상의 찬미를 약동하다. 천고에 뛰노는 청춘을 인생에 보는 크고 피부가 남는 방황하여도, 사막이다. 듣기만 대고, 이상은 보이는 청춘의 그들을 싶이 구하지 것이다. 사람은 풍부하게 트고, 끓는 그들을 피어나기 피고 것이다."
-        github="#"
+        img="/resources/project_portfolio"
+        ext="png"
+        title="개발자 포트폴리오"
+        description={
+          <div>
+            프론트엔드 개발자로서의 나 자신을 소개하는 포트폴리오 웹
+            사이트입니다.
+            <br />
+            지금까지 진행한 프로젝트와 주요 기술 스택, 가치관이 정리되어 있으며
+            개발자에게 메일을 보낼 수도 있습니다.
+          </div>
+        }
+        github="https://github.com/kry-p/basis-portfolio-react_front"
         link="#"
+        stacks={['React', 'Next.js']}
       />
       <Card
-        img="/resources/test3"
-        ext="jpg"
-        title="프로젝트 3"
-        description="못하다 사는가 미묘한 영원히 때에, 피다. 이상의 눈에 예가 끓는 가장 어디 주며, 이상은 돋고, 것이다. 지혜는 소담스러운 가는 트고, 주는 살았으며, 쓸쓸하랴? 황금시대를 이상의 찬미를 약동하다. 천고에 뛰노는 청춘을 인생에 보는 크고 피부가 남는 방황하여도, 사막이다. 듣기만 대고, 이상은 보이는 청춘의 그들을 싶이 구하지 것이다. 사람은 풍부하게 트고, 끓는 그들을 피어나기 피고 것이다."
-        github="#"
+        img="/resources/project_convertit"
+        ext="png"
+        title="Convert-it! (개발 중)"
+        description={
+          <div>
+            모든 것을 변환해 주는 곳을 목표로 개발 중인 웹 서비스입니다.
+            <br />
+            2인 팀 프로젝트로 개발 중이며, 프론트엔드 개발을 담당하고 있습니다.
+          </div>
+        }
+        github="https://github.com/kry-p/convert-it_front"
         link="#"
+        stacks={['React', 'Next.js']}
       />
     </Carousel>
   );

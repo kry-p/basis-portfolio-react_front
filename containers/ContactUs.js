@@ -67,7 +67,9 @@ const ContactUs = () => {
     const regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
     if (!regex.test(email)) {
-      alert('메일 주소가 올바르지 않습니다.');
+      alert(
+        '메일 주소가 올바르지 않습니다. 메일 주소를 올바르게 입력하지 않으면 피드백을 드릴 수 없사오니 정확하게 입력해 주시길 부탁드립니다.',
+      );
       return;
     }
 

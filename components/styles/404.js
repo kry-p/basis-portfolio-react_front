@@ -15,7 +15,7 @@ export const Page404 = styled.div`
 `;
 
 export const PageTypo404 = styled.span`
-  font-family: 'XTypewriter-Regular';
+  font-family: 'MinSans-Thin';
   font-size: 8rem;
   user-select: none;
   color: ${palette.gray[3]};
@@ -36,6 +36,7 @@ export const NotFoundMenu = styled.div`
 `;
 
 export const PageStyle404 = styled.div`
+  font-family: 'MinSans-Medium';
   display: flex;
   flex-direction: column;
   justify-content: center;
