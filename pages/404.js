@@ -1,17 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-import useWindow from '../modules/hooks/useWindow';
+import useWindow from "../modules/hooks/useWindow";
 
-import { BorderedButton, BorderlessButton } from '../components/button';
-import {
-  Page404,
-  PageStyle404,
-  PageTypo404,
-  PageDescription404,
-  NotFoundMenu,
-} from '../components/Styles/404';
-import AppbarWithoutSSR from '../components/appbar/withoutSSR';
+import { BorderedButton, BorderlessButton } from "../components/button";
+import { PageNotFound, PageTypoNotFound, PageDescriptionNotFound, MenuNotFound, PageStyleNotFound } from "../components/Styles/NotFound";
+import AppbarWithoutSSR from "../components/appbar/withoutSSR";
 
 const NotFound = () => {
   const router = useRouter();
@@ -26,17 +20,15 @@ const NotFound = () => {
   return (
     <>
       <AppbarWithoutSSR title="BASIS" />
-      <Page404
+      <PageNotFound
         style={{
           height: `${height}px`,
         }}
       >
-        <PageStyle404>
-          <PageTypo404>404</PageTypo404>
-          <PageDescription404>
-            요청하신 페이지를 찾을 수 없습니다.
-          </PageDescription404>
-          <NotFoundMenu>
+        <PageStyleNotFound>
+          <PageTypoNotFound>404</PageTypoNotFound>
+          <PageDescriptionNotFound>요청하신 페이지를 찾을 수 없습니다.</PageDescriptionNotFound>
+          <MenuNotFound>
             <BorderlessButton
               onClick={() => {
                 router.back();
@@ -46,14 +38,14 @@ const NotFound = () => {
             </BorderlessButton>
             <BorderedButton
               onClick={() => {
-                router.push('/');
+                router.push("/");
               }}
             >
               홈으로
             </BorderedButton>
-          </NotFoundMenu>
-        </PageStyle404>
-      </Page404>
+          </MenuNotFound>
+        </PageStyleNotFound>
+      </PageNotFound>
     </>
   );
 };

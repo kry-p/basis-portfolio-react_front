@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import palette from '../../modules/palette';
+import styled from "styled-components";
+import palette from "../../modules/palette";
 
-export const Page404 = styled.div`
+export const PageNotFound = styled.div`
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -14,8 +14,8 @@ export const Page404 = styled.div`
   width: 100%;
 `;
 
-export const PageTypo404 = styled.span`
-  font-family: 'MinSans-Thin';
+export const PageTypoNotFound = styled.span`
+  font-family: "MinSans-Thin";
   font-size: 8rem;
   user-select: none;
   color: ${palette.gray[3]};
@@ -25,7 +25,7 @@ export const PageTypo404 = styled.span`
   }
 `;
 
-export const NotFoundMenu = styled.div`
+export const MenuNotFound = styled.div`
   display: grid;
   padding-top: 1rem;
   grid-gap: 0.5rem;
@@ -35,8 +35,8 @@ export const NotFoundMenu = styled.div`
   }
 `;
 
-export const PageStyle404 = styled.div`
-  font-family: 'MinSans-Medium';
+export const PageStyleNotFound = styled.div`
+  font-family: "MinSans-Medium";
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +49,7 @@ export const PageStyle404 = styled.div`
   height: 100%;
 `;
 
-export const PageDescription404 = styled.span`
+export const PageDescriptionNotFound = styled.span`
   user-select: none;
   color: ${palette.gray[3]};
 `;

@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import Fade from 'react-reveal/Fade';
-import Link from 'next/link';
+import styled from "styled-components";
+import Fade from "react-reveal/Fade";
+import Link from "next/link";
 
-import ContactUs from '../containers/ContactUs';
-import AppbarWithoutSSR from '../components/appbar/withoutSSR';
-import ProjectCarousel from '../components/Carousel';
-import Guide from '../components/Guide';
-import { FooterButton } from '../components/button';
+import ContactUs from "../containers/ContactUs";
+import AppbarWithoutSSR from "../components/appbar/withoutSSR";
+import ProjectCarousel from "../components/Carousel";
+import Guide from "../components/Guide";
+import { FooterButton } from "../components/button";
 import {
   PageAbout,
   Grid,
@@ -19,9 +19,9 @@ import {
   TechStackArticle,
   TechStackArticleDescription,
   CommonArticleTitle,
-} from '../components/styles';
+} from "../components/styles";
 
-import { AiOutlineMail, AiFillGithub, AiOutlinePhone } from 'react-icons/ai';
+import { AiOutlineMail, AiFillGithub, AiOutlinePhone } from "react-icons/ai";
 
 const Footer = styled.div`
   display: flex;
@@ -49,7 +49,7 @@ const Content = () => (
   <>
     <Guide />
     <PageAbout oddPage>
-      <Grid double style={{ fontFamily: 'D2Coding' }}>
+      <Grid double style={{ fontFamily: "D2Coding" }}>
         <Left>
           <Fade right>
             <Typo left oddPage>
@@ -60,7 +60,7 @@ const Content = () => (
         <Right>
           <Fade left>
             <Typo right ownName oddPage>
-              I'm
+              I&apos;m
             </Typo>
           </Fade>
           <Fade left>
@@ -91,9 +91,9 @@ const Content = () => (
             <AboutArticle>
               <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
                 }}
               >
                 <AboutArticleTitle>About me</AboutArticleTitle>
@@ -106,41 +106,36 @@ const Content = () => (
               </div>
               <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
                 }}
               >
-                <AboutArticleTitle>"Good code" is...</AboutArticleTitle>
+                <AboutArticleTitle>&quot;Good code&quot; is...</AboutArticleTitle>
                 <AboutArticleDescription>
-                  제가 생각하는 좋은 코드는 주석이 최소화되고, 효율적인
-                  코드입니다.
+                  제가 생각하는 좋은 코드는 주석이 최소화되고, 효율적인 코드입니다.
                   <br />
                   <br />
-                  좋은 코드는 읽기 쉽고 네이밍 컨벤션이 잘 정리되어 있어
-                  주석으로 부연설명을 할 필요성이 줄어듭니다.
+                  좋은 코드는 읽기 쉽고 네이밍 컨벤션이 잘 정리되어 있어 주석으로 부연설명을 할 필요성이 줄어듭니다.
                   <br />
-                  또, 자원은 유한하므로 동일한 결과를 제공한다면 자원을 적게
-                  사용하는 코드가 좋은 코드입니다.
+                  또, 자원은 유한하므로 동일한 결과를 제공한다면 자원을 적게 사용하는 코드가 좋은 코드입니다.
                 </AboutArticleDescription>
               </div>
               <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
                 }}
               >
                 <AboutArticleTitle>My goal</AboutArticleTitle>
                 <AboutArticleDescription>
                   항상 공부하며 자신을 발전시키는 개발자가 되고자 합니다.
                   <br />
-                  프론트엔드 개발자로서의 길을 달려 온 1년여의 기간 동안 전혀
-                  손대보지 않은 언어와 라이브러리에 손을 뻗었고, 잘 만들어진 웹
+                  프론트엔드 개발자로서의 길을 달려 온 1년여의 기간 동안 전혀 손대보지 않은 언어와 라이브러리에 손을 뻗었고, 잘 만들어진 웹
                   사이트를 관찰, 모방하기도 하였습니다.
                   <br />
-                  앞으로 달려갈 길이 순탄치 않겠지만, 모든 노력이 더 나은 내일을
-                  위한 거름이 되도록 최선을 다하겠습니다.
+                  앞으로 달려갈 길이 순탄치 않겠지만, 모든 노력이 더 나은 내일을 위한 거름이 되도록 최선을 다하겠습니다.
                 </AboutArticleDescription>
               </div>
             </AboutArticle>
@@ -184,9 +179,9 @@ const Content = () => (
       <Grid single>
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <Fade right>
@@ -199,53 +194,51 @@ const Content = () => (
     <PageAbout>
       <div
         style={{
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <ContactUs />
         <div
           style={{
-            width: '100vw',
-            height: '30vh',
-            background: 'black',
-            display: 'flex',
-            flexDirection: 'column',
-            color: 'white',
-            justifyContent: 'center',
-            alignItems: 'center',
+            width: "100vw",
+            height: "30vh",
+            background: "black",
+            display: "flex",
+            flexDirection: "column",
+            color: "white",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Footer>
-            <div style={{ fontSize: '1.5rem', fontFamily: 'MinSans-Medium' }}>
-              JAEHUN JUNG
-            </div>
+            <div style={{ fontSize: "1.5rem", fontFamily: "MinSans-Medium" }}>JAEHUN JUNG</div>
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: '3rem 1fr',
-                alignItems: 'center',
-                paddingTop: '0.25rem',
-                gap: '0.25rem',
+                display: "grid",
+                gridTemplateColumns: "3rem 1fr",
+                alignItems: "center",
+                paddingTop: "0.25rem",
+                gap: "0.25rem",
               }}
             >
-              <Link href="mailto:jhjung.dev@gmail.com">
+              <Link href="mailto:jhjung.dev@gmail.com" passHref>
                 <FooterButton>
                   <AiOutlineMail size="16" color="white" />
                 </FooterButton>
               </Link>
               <div>jhjung.dev@gmail.com</div>
-              <Link href={`tel:${process.env.NEXT_PUBLIC_PHONE_LINK}`}>
+              <Link href={`tel:${process.env.NEXT_PUBLIC_PHONE_LINK}`} passHref>
                 <FooterButton>
                   <AiOutlinePhone size="16" color="white" />
                 </FooterButton>
               </Link>
               <div>{process.env.NEXT_PUBLIC_PHONE_NUMBER}</div>
-              <Link href="https://github.com/kry-p">
+              <Link href="https://github.com/kry-p" passHref>
                 <FooterButton>
                   <AiFillGithub size="16" color="white" />
                 </FooterButton>
