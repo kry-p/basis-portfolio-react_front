@@ -32,6 +32,40 @@ export const BorderedButton = styled.button`
   &:hover {
     background-color: ${palette.gray[8]};
   }
+  ${(props) =>
+    props.accent &&
+    css`
+      background-color: ${palette.teal[4]};
+      &:hover {
+        background-color: ${palette.teal[5]};
+      }
+    `}
+`;
+
+export const BorderlessButton = styled.button`
+  background-color: ${palette.gray[9]};
+  color: white;
+  border-radius: 24px;
+  border: rgba(0, 0, 0, 0);
+  font-family: 'MinSans-Medium';
+  font-size: 0.875rem;
+  padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+
+  transition: background-color 0.25s;
+  user-select: none;
+
+  &:hover {
+    background-color: ${palette.gray[8]};
+  }
+
+  ${(props) =>
+    props.accent &&
+    css`
+      background-color: ${palette.teal[4]};
+      &:hover {
+        background-color: ${palette.teal[5]};
+      }
+    `}
 `;
 
 export const IconButton = styled.button`
@@ -49,24 +83,6 @@ export const FooterButton = styled.button`
   padding-top: 0.25rem;
 
   transition: background-color 0.25s ease-in-out;
-  &:hover {
-    background-color: ${palette.gray[8]};
-  }
-`;
-
-export const BorderlessButton = styled.button`
-  background-color: ${palette.gray[9]};
-  color: white;
-  color: white;
-  border-radius: 24px;
-  border: rgba(0, 0, 0, 0);
-  font-family: 'MinSans-Medium';
-  font-size: 0.875rem;
-  padding: 0.7rem 1.2rem 0.7rem 1.2rem;
-
-  transition: background-color 0.25s;
-  user-select: none;
-
   &:hover {
     background-color: ${palette.gray[8]};
   }

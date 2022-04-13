@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Carousel from 'react-elastic-carousel';
-import { AiOutlineGithub, AiOutlineLink } from 'react-icons/ai';
+import { AiOutlineGithub, AiOutlineLink, AiOutlineClose } from 'react-icons/ai';
 
 import useWindow from '../modules/hooks/useWindow';
-import { BorderedButton } from './button';
+import { BorderlessButton } from './button';
 import palette from '../modules/palette';
 
 // Side project cards
@@ -58,15 +58,23 @@ const ProjectCardCover = styled.div`
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 
   @media (min-width: 320px) {
-    height: 17rem;
+    height: 17.5rem;
     width: 17rem;
   }
 
   @media (min-width: 512px) {
-    height: 16rem;
+    height: 17rem;
     width: 20rem;
   }
 `;
+
+const ButtonText = styled.span`
+  @media (max-width: 320px) {
+    display: none;
+  }
+`;
+
+const StyledButtonContainer = styled.div``;
 
 // 이미지 파일 경로, 확장자, 프로젝트 이름, 상세정보, 깃허브 링크, 데모 / 실제 웹 서비스 링크, 상세정보 링크
 const Card = ({ img, ext, title, description, github, link, stacks }) => {
@@ -95,7 +103,7 @@ const Card = ({ img, ext, title, description, github, link, stacks }) => {
           style={{
             width: '85%',
             fontFamily: 'MinSans-Thin',
-            fontSize: '0.8rem',
+            fontSize: '0.9rem',
           }}
         >
           {description}
@@ -108,7 +116,6 @@ const Card = ({ img, ext, title, description, github, link, stacks }) => {
             color: 'black',
           }}
         >
-          {/* 상세정보 링크가 없으면 숨김 */}
           {stacks ? (
             <div
               style={{
@@ -138,11 +145,17 @@ const Card = ({ img, ext, title, description, github, link, stacks }) => {
           style={{
             width: '88.75%',
             display: 'grid',
-            gap: '0.5rem',
+            gap: '1rem',
             gridTemplateColumns: '1fr 1fr',
           }}
         >
-          <BorderedButton onClick={() => router.push(github)}>
+          <BorderlessButton
+            onClick={() => {
+              !!github
+                ? router.push(github)
+                : alert('해당 링크는 준비 중입니다.');
+            }}
+          >
             <div
               style={{
                 display: 'flex',
@@ -150,11 +163,19 @@ const Card = ({ img, ext, title, description, github, link, stacks }) => {
                 alignItems: 'center',
               }}
             >
-              <AiOutlineGithub />
-              <span>GitHub</span>
+              <AiOutlineGithub
+                size={20}
+                style={{ paddingBottom: '0.0875rem' }}
+              />
+              <ButtonText>GitHub</ButtonText>
             </div>
-          </BorderedButton>
-          <BorderedButton onClick={() => router.push(link)}>
+          </BorderlessButton>
+          <BorderlessButton
+            accent
+            onClick={() => {
+              !!link ? router.push(link) : alert('해당 링크는 준비 중입니다.');
+            }}
+          >
             <div
               style={{
                 display: 'flex',
@@ -162,10 +183,10 @@ const Card = ({ img, ext, title, description, github, link, stacks }) => {
                 alignItems: 'center',
               }}
             >
-              <AiOutlineLink />
-              <span>Link</span>
+              <AiOutlineLink size={20} style={{ paddingBottom: '0.0875rem' }} />
+              <ButtonText>Link</ButtonText>
             </div>
-          </BorderedButton>
+          </BorderlessButton>
         </div>
       </ProjectCardCover>
     </ProjectCard>
@@ -232,7 +253,7 @@ const ProjectCarousel = () => {
             <br />
             심의 정보 자동 수집과 날짜별 / 이름별 검색을 지원합니다.
             <br />
-            React를 사용한 첫 프론트엔드 프로젝트입니다.
+            React를 사용한 첫 1인 프론트엔드 프로젝트입니다.
           </div>
         }
         github="https://github.com/kry-p/gamealive-client"
@@ -264,11 +285,10 @@ const ProjectCarousel = () => {
           <div>
             모든 것을 변환해 주는 곳을 목표로 개발 중인 웹 서비스입니다.
             <br />
-            2인 팀 프로젝트로 개발 중이며, 프론트엔드 개발을 담당하고 있습니다.
+            2인 팀 프로젝트로 진행 중이며, 프론트엔드 개발을 담당하고 있습니다.
           </div>
         }
         github="https://github.com/kry-p/convert-it_front"
-        link="#"
         stacks={['React', 'Next.js']}
       />
     </Carousel>

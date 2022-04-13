@@ -16,11 +16,12 @@ import {
   MenuItem,
 } from './AppbarStyle';
 
+// name, scrollPos
 const mainRouteData = [
-  ['Home', '/'],
-  ['About me', '/about'],
-  ['Gallery', '#'],
-  ['Contact', '#'],
+  ['Home', 0, 0],
+  ['About me', 1, 2],
+  ['Portfolio', 3, 5],
+  ['Contact', 3.8, 5.8],
 ];
 
 const managementRouteData = [
@@ -78,7 +79,14 @@ const Appbar = ({ title, type }) => {
                       <MenuItem
                         key={item}
                         item
-                        onClick={() => router.push(item[1])}
+                        onClick={() =>
+                          window.scrollTo(
+                            0,
+                            window.innerWidth >= 1024
+                              ? window.innerHeight * item[1]
+                              : window.innerHeight * item[2],
+                          )
+                        }
                       >
                         {item[0]}
                       </MenuItem>

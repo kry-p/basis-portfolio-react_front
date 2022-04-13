@@ -33,22 +33,6 @@
   font-display: swap;
 }
 
-/* @font-face {
-  font-family: 'XTypewriter-Regular';
-  src: url('/resources/XTypewriter-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'XTypewriter-Bold';
-  src: url('/resources/XTypewriter-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-} */
-
 @font-face {
   font-family: 'D2Coding';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff')
@@ -76,6 +60,10 @@ body {
   font-family: D2Coding, -apple-system, sans-serif;
   background: black;
   text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 img {

@@ -2,8 +2,9 @@ import { useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import emailjs from '@emailjs/browser';
 
-import { CommonArticleTitle } from '../components/styles/About';
+import { CommonArticleTitle } from '../components/styles';
 import { BorderlessInput } from '../components/button';
+import palette from '../modules/palette';
 
 const StyledTextarea = styled.textarea`
   border: 1px solid black;
@@ -38,7 +39,7 @@ const StyledTextarea = styled.textarea`
 
   // 포커스 시
   &:focus {
-    border: 1px solid red;
+    border: 1px solid ${palette.teal[3]};
     outline: none; // 기본 하이라이트 제거
   }
 `;

@@ -20,10 +20,6 @@ export const AppBar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
   .left {
     padding-left: 2rem;
   }
@@ -69,7 +65,10 @@ export const Drawer = styled.div`
 
   transition: 0.5s cubic-bezier(0.8, 0, 0.2, 1);
 
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   z-index: 4;
 `;
 
