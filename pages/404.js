@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useWindow from "../modules/hooks/useWindow";
 
 import { BorderedButton, BorderlessButton } from "../components/button";
-import { PageNotFound, PageTypoNotFound, PageDescriptionNotFound, MenuNotFound, PageStyleNotFound } from "../components/Styles/NotFound";
+import { PageNotFound, PageTypoNotFound, PageDescriptionNotFound, MenuNotFound, PageStyleNotFound } from "../components/styles/NotFound";
 import AppbarWithoutSSR from "../components/appbar/withoutSSR";
 
 const NotFound = () => {
