@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import palette from '../../modules/palette';
+import styled, { css } from "styled-components";
+import palette from "../../modules/palette";
 
 export const PageAbout = styled.div`
   font-family: MinSans-Thin;
@@ -121,6 +121,7 @@ export const AboutArticleTitle = styled.h2`
 export const AboutArticleDescription = styled.article`
   text-align: end;
   padding-bottom: 1rem;
+  word-break: keep-all;
   @media (max-width: 512px) {
     font-size: 0.85rem;
     padding-bottom: 0.2rem;

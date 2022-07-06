@@ -100,7 +100,7 @@ const Content = () => (
                 <AboutArticleDescription>
                   안녕하세요, 프론트엔드 개발자를 목표로 하는 정재훈입니다.
                   <br />
-                  열심히 공부하고, 취미생활을 하며, 때로는 열심히 놉니다.
+                  열심히 공부하고, 때로는 취미생활을, 때로는 열심히 놉니다.
                   <br />
                 </AboutArticleDescription>
               </div>
@@ -113,12 +113,12 @@ const Content = () => (
               >
                 <AboutArticleTitle>&quot;Good code&quot; is...</AboutArticleTitle>
                 <AboutArticleDescription>
-                  제가 생각하는 좋은 코드는 주석이 최소화되고, 효율적인 코드입니다.
+                  제가 생각하는 좋은 코드는 주석이 최소화되는 코드입니다.
                   <br />
                   <br />
-                  좋은 코드는 읽기 쉽고 네이밍 컨벤션이 잘 정리되어 있어 주석으로 부연설명을 할 필요성이 줄어듭니다.
+                  좋은 코드는 코딩 컨벤션이 잘 정리되어 있어 가독성이 높아, 주석으로 부연설명을 할 필요성이 줄어듭니다.
                   <br />
-                  또, 자원은 유한하므로 동일한 결과를 제공한다면 자원을 적게 사용하는 코드가 좋은 코드입니다.
+                  퍼포먼스가 중요치 않은 코드는 없지만, 같은 로직을 수행하는 코드라면 읽기 좋은 코드가 좋은 코드입니다.
                 </AboutArticleDescription>
               </div>
               <div
@@ -164,9 +164,7 @@ const Content = () => (
             <article>
               <CommonArticleTitle big>Now studying.</CommonArticleTitle>
               <TechStackArticleDescription>
-                SSR
-                <br />
-                JS (Remind)
+                JavaScript
                 <br />
                 State mgnt.
               </TechStackArticleDescription>
