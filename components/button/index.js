@@ -1,20 +1,26 @@
-import router from 'next/router';
-import styled, { css } from 'styled-components';
-import palette from '../../modules/palette';
+import router from "next/router";
+import styled, { css } from "styled-components";
+import palette from "../../modules/palette";
 
 const Logo = styled.button`
   background-color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0, 0);
   padding: 0.5rem 0.5rem;
+  color: ${palette.gray[0]};
+  font-size: 1.75rem;
 
   ${(props) =>
     props.cali &&
     css`
-      font-family: 'OoohBaby-Regular';
+      font-family: "OoohBaby-Regular";
       font-weight: 700;
     `}
-  font-size: 1.75rem;
-  color: ${palette.gray[6]};
+
+  ${(props) =>
+    props.colorInverted &&
+    css`
+      color: ${palette.gray[9]};
+    `}
 `;
 
 export const BorderedButton = styled.button`
@@ -22,7 +28,7 @@ export const BorderedButton = styled.button`
   color: white;
   border: 2px solid ${palette.gray[1]};
   border-radius: 24px;
-  font-family: 'MinSans-Medium';
+  font-family: "MinSans-Medium";
   font-size: 0.875rem;
   padding: 0.7rem 1.2rem 0.7rem 1.2rem;
 
@@ -47,7 +53,7 @@ export const BorderlessButton = styled.button`
   color: white;
   border-radius: 24px;
   border: rgba(0, 0, 0, 0);
-  font-family: 'MinSans-Medium';
+  font-family: "MinSans-Medium";
   font-size: 0.875rem;
   padding: 0.7rem 1.2rem 0.7rem 1.2rem;
 
@@ -94,7 +100,7 @@ export const BorderlessInput = styled.input`
   color: white;
   border-radius: 24px;
   border: rgba(0, 0, 0, 0);
-  font-family: 'MinSans-Medium';
+  font-family: "MinSans-Medium";
   font-size: 0.875rem;
   padding: 0.7rem 1.2rem 0.7rem 1.2rem;
 
@@ -134,33 +140,39 @@ const StyledBurger = styled.button`
   div {
     width: 1.75rem;
     height: 0.075rem;
-    background: ${palette.gray[6]};
     transition: all 0.3s ease-in-out;
     position: relative;
     transform-origin: 1px;
+    background: ${palette.gray[0]};
+    ${(props) =>
+      props.colorInverted &&
+      css`
+        background: ${palette.gray[9]};
+      `}
 
     :first-child {
-      transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
     }
 
     :nth-child(2) {
-      opacity: ${({ open }) => (open ? '0' : '1')};
-      transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(0)')};
+      opacity: ${({ open }) => (open ? "0" : "1")};
+      transform: ${({ open }) => (open ? "translateX(0)" : "translateX(0)")};
     }
 
     :nth-child(3) {
-      transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
     }
   }
 `;
 
-export const Burger = ({ open, setOpen }) => {
+export const Burger = ({ open, setOpen, colorInverted }) => {
   return (
     <StyledBurger
       open={open}
       onClick={() => {
         setOpen();
       }}
+      colorInverted={colorInverted}
     >
       <div />
       <div />
@@ -169,17 +181,18 @@ export const Burger = ({ open, setOpen }) => {
   );
 };
 
-export const LogoButton = ({ title, cali }) => {
+export const LogoButton = ({ title, cali, colorInverted }) => {
   return cali ? (
     <Logo
       onClick={() => {
-        router.push('/');
+        router.push("/");
       }}
       cali
+      colorInverted={colorInverted}
     >
       {title}
     </Logo>
   ) : (
-    <Logo>{title}</Logo>
+    <Logo colorInverted={colorInverted}>{title}</Logo>
   );
 };

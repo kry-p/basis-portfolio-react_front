@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import useWindow from "../modules/hooks/useWindow";
-
 import { BorderedButton, BorderlessButton } from "../components/button";
 import { PageNotFound, PageTypoNotFound, PageDescriptionNotFound, MenuNotFound, PageStyleNotFound } from "../components/styles/NotFound";
-import AppbarWithoutSSR from "../components/appbar/withoutSSR";
+import { AppbarWithoutSSR } from "../components/withoutSSR";
+
+import useWindow from "../modules/hooks/useWindow";
 
 const NotFound = () => {
   const router = useRouter();

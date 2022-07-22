@@ -1,57 +1,53 @@
 @font-face {
-  font-family: 'MinSans-Medium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff')
-    format('woff');
+  font-family: "MinSans-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MinSans-Thin';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Thin.woff')
-    format('woff');
+  font-family: "MinSans-Thin";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Thin.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MinSans-Bold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff')
-    format('woff');
+  font-family: "MinSans-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'OoohBaby-Regular';
-  src: url('/resources/OoohBaby-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-family: "OoohBaby-Regular";
   font-style: normal;
-  font-display: swap;
+  font-weight: 400;
+  src: url("/resources/fonts/oooh-baby-v3-latin-regular.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/resources/fonts/oooh-baby-v3-latin-regular.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/resources/fonts/oooh-baby-v3-latin-regular.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/resources/fonts/oooh-baby-v3-latin-regular.woff") format("woff"),
+    /* Modern Browsers */ url("/resources/fonts/oooh-baby-v3-latin-regular.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("/resources/fonts/oooh-baby-v3-latin-regular.svg#OoohBaby") format("svg"); /* Legacy iOS */
 }
 
 @font-face {
-  font-family: 'D2Coding';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff')
-    format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: "D2Coding";
+  src: url("/resources/fonts/D2Coding.woff2") format("woff2");
   font-display: swap;
+  unicode-range: U+000-5FF, U+AE30, U+B798, U+B85C, U+B864, U+C2A4, U+C544, U+C5EC, U+C778, U+D06C, U+D558, U+D655;
 }
 
 @font-face {
-  font-family: 'Montserrat Alternates';
+  font-family: "Montserrat Alternates";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserratalternates/v12/mFTiWacfw6zH4dthXcyms1lPpC8I_b0juU0xNIPFB7xG-GNxkg.woff2)
-    format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
+  src: url(https://fonts.gstatic.com/s/montserratalternates/v12/mFTiWacfw6zH4dthXcyms1lPpC8I_b0juU0xNIPFB7xG-GNxkg.woff2) format("woff2");
+  unicode-range: U+000-5FF;
 }
 
 body {

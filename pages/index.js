@@ -3,7 +3,7 @@ import Fade from "react-reveal/Fade";
 import Link from "next/link";
 
 import ContactUs from "../containers/ContactUs";
-import AppbarWithoutSSR from "../components/appbar/withoutSSR";
+import { AppbarWithoutSSR, BokehsWithoutSSR } from "../components/withoutSSR";
 import ProjectCarousel from "../components/Carousel";
 import Guide from "../components/Guide";
 import { FooterButton } from "../components/button";
@@ -49,31 +49,31 @@ const Content = () => (
   <>
     <Guide />
     <PageAbout oddPage>
-      <Grid double style={{ fontFamily: "D2Coding" }}>
+      <Grid single style={{ fontFamily: "D2Coding" }}>
         <Left>
           <Fade right>
             <Typo left oddPage>
               Hello.
             </Typo>
           </Fade>
+          <div>
+            <Fade left>
+              <Typo right ownName oddPage>
+                I&apos;m
+              </Typo>
+            </Fade>
+            <Fade left>
+              <Typo right ownName oddPage>
+                JAEHUN
+              </Typo>
+            </Fade>
+            <Fade left>
+              <Typo right ownName oddPage>
+                JUNG
+              </Typo>
+            </Fade>
+          </div>
         </Left>
-        <Right>
-          <Fade left>
-            <Typo right ownName oddPage>
-              I&apos;m
-            </Typo>
-          </Fade>
-          <Fade left>
-            <Typo right ownName oddPage>
-              JAEHUN
-            </Typo>
-          </Fade>
-          <Fade left>
-            <Typo right ownName oddPage>
-              JUNG
-            </Typo>
-          </Fade>
-        </Right>
       </Grid>
     </PageAbout>
     <PageAbout>
@@ -253,6 +253,7 @@ const Content = () => (
 const Index = () => {
   return (
     <>
+      <BokehsWithoutSSR />
       <AppbarWithoutSSR title="BASIS" />
       <Content />
     </>

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import styled, { keyframes } from 'styled-components';
-import palette from '../modules/palette';
-import { Arrow, ArrowButton } from './button/Arrow';
+import styled, { keyframes } from "styled-components";
+import palette from "../modules/palette";
+import { Arrow, ArrowButton } from "./button/Arrow";
 
-import useWindow from '../modules/hooks/useWindow';
-import useScroll from '../modules/hooks/useScroll';
+import useWindow from "../modules/hooks/useWindow";
+import useScroll from "../modules/hooks/useScroll";
 
 const wave = keyframes`
   0% {
@@ -24,7 +24,7 @@ const StyledGuide = styled.div`
   bottom: 3rem;
 
   width: 100vw;
-  height: 4rem;
+  height: 2rem;
   display: grid;
   grid-template-rows: 1fr;
   justify-content: center;
@@ -57,11 +57,9 @@ const Guide = () => {
         opacity: `${scroll >= 0.3 * height ? 0 : 1}`,
       }}
     >
-      <div style={{ color: `${palette.gray[3]}` }}>
-        아래로 스크롤하여 확인하기
-      </div>
+      <div style={{ color: `${palette.gray[0]}` }}>아래로 스크롤하여 확인하기</div>
       <WaveArrow>
-        <ArrowButton style={{ transform: 'rotate(-45deg)' }}>
+        <ArrowButton style={{ transform: "rotate(-45deg)" }}>
           <Arrow>
             <div />
             <div />

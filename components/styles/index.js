@@ -8,12 +8,6 @@ export const PageAbout = styled.div`
   width: 100vw;
   justify-content: center;
   align-items: center;
-
-  ${(props) =>
-    props.oddPage &&
-    css`
-      background: rgb(0, 0, 0);
-    `}
 `;
 
 export const Grid = styled.div`
@@ -85,6 +79,14 @@ export const Typo = styled.span`
     props.ownName &&
     css`
       line-height: 80%;
+      font-size: 5rem;
+
+      @media (min-width: 384px) {
+        font-size: 6rem;
+      }
+      @media (min-width: 512px) {
+        font-size: 9rem;
+      }
 
       @media (min-width: 768px) {
         font-size: 10rem;
